@@ -15,25 +15,25 @@ import java.time.LocalDate;
 
 @RestControllerAdvice(annotations = DeliveryApi.class)
 @Slf4j
-public class BookStoreControllerAdvice {
+public class DeliveryApiControllerAdvice {
 
     @ExceptionHandler(InvalidRequestException.class)
     public ResponseEntity<ErrorResponse> handleInvalidException(InvalidRequestException e) {
-        log.error("BookStoreControllerAdvice handles InvalidRequestException", e);
+        log.error("DeliveryApiControllerAdvice handles InvalidRequestException", e);
         return new ResponseEntity<>(anErrorResponseBuilder(HttpStatus.BAD_REQUEST, e.getMessage()), HttpStatus.BAD_REQUEST);
 
     }
 
     @ExceptionHandler(UnProcessableEntitiyException.class)
     public ResponseEntity<ErrorResponse> handleUnprocessableException(UnProcessableEntitiyException e) {
-        log.error("BookStoreControllerAdvice handles handleUnprocessableException", e);
+        log.error("DeliveryApiControllerAdvice handles handleUnprocessableException", e);
         return new ResponseEntity<>(anErrorResponseBuilder(HttpStatus.UNPROCESSABLE_ENTITY, e.getMessage()), HttpStatus.UNPROCESSABLE_ENTITY);
 
     }
 
     @ExceptionHandler(ConflictException.class)
     public ResponseEntity<ErrorResponse> handleConflictFieldException(ConflictException e) {
-        log.error("BookStoreControllerAdvice handles handleUnprocessableException", e);
+        log.error("DeliveryApiControllerAdvice handles handleUnprocessableException", e);
         return new ResponseEntity<>(anErrorResponseBuilder(HttpStatus.CONFLICT, e.getMessage()), HttpStatus.CONFLICT);
 
     }
