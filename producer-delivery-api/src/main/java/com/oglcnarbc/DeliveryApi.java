@@ -10,5 +10,5 @@ import java.lang.annotation.Target;
 @RestController
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PersonalApi {
+public @interface DeliveryApi {
 }

@@ -1,5 +1,5 @@
 package com.oglcnarbc.advice;
-import com.oglcnarbc.PersonalApi;
+import com.oglcnarbc.DeliveryApi;
 import com.oglcnarbc.common.exception.ConflictException;
 import com.oglcnarbc.common.exception.InvalidRequestException;
 import com.oglcnarbc.common.exception.NoContentException;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDate;
 
-@RestControllerAdvice(annotations = PersonalApi.class)
+@RestControllerAdvice(annotations = DeliveryApi.class)
 @Slf4j
 public class BookStoreControllerAdvice {
 

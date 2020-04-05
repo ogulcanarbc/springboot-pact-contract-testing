@@ -1,5 +1,6 @@
-package com.oglcnarbc;
+package com.oglcnarbc.controller;
 
+import com.oglcnarbc.DeliveryApi;
 import com.oglcnarbc.model.response.CreateDeliveryResponse;
 import com.oglcnarbc.service.DeliveryService;
 import lombok.RequiredArgsConstructor;
@@ -11,13 +12,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/producer/api/v1")
 @RequiredArgsConstructor
-@PersonalApi
+@DeliveryApi
 public class DeliveryController {
 
     private final DeliveryService deliveryService;
 
 
-    @GetMapping("/deliveries")
+    @GetMapping("/delivery")
     @ResponseStatus(HttpStatus.OK)
     public List<CreateDeliveryResponse> getDeliveries() {
         return deliveryService.getDeliveries();
