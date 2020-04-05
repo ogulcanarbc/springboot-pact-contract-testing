@@ -19,4 +19,5 @@ and all after visit to pact broker url. (exmp: localhost:80)
 
 _Recommended Article:_
 * https://docs.pact.io
+* https://martinfowler.com/articles/consumerDrivenContracts.html
 * https://github.com/DiUS/pact-jvm
