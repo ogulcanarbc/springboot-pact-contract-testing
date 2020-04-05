@@ -1,14 +1,15 @@
-# pact-contract-springboot
-pact consumer driven contract testing with spring boot
+###### Pact consumer driven contract testing with spring boot
 
-
-Docker Setup
+**Docker Setup**
 * Run docker-compose up command to get a running Pact Broker and a clean Postgres database.
 
-Pact Broker Usage
-consumer
-1. Execute mvn test (create pack json)
-2. Execute mvn pact:publish
+**Pact Broker Usage**
 
-provider
-1 Execute mvn pact:verify
+Consumer
+1. Execute `mvn test `for create pack json
+2. Execute `mvn pact:publish` for publish to pact broker
+
+Provider
+1. Execute `mvn pact:verify` for pact verify
+
+and all after visit to pact broker url. (exmp: localhost:80)
