@@ -1,7 +1,7 @@
 # Pact Consumer Driven Contract Testing With Spring Boot
 
 **Docker Setup**
-* Run docker-compose up command to get a running Pact Broker and a clean Postgres database.
+* Run `docker-compose up` command to get a running Pact Broker and a clean Postgres database.
 
 **Pact Broker Usage**
 
