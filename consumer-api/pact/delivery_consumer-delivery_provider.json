@@ -1,0 +1,96 @@
+{
+  "provider": {
+    "name": "delivery_provider"
+  },
+  "consumer": {
+    "name": "delivery_consumer"
+  },
+  "interactions": [
+    {
+      "description": "a request to get delivery",
+      "request": {
+        "method": "GET",
+        "path": "/producer/api/v1/delivery/1"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": {
+          "orderNumber": "4513415",
+          "supplierId": 0,
+          "healthState": "HEALTHY",
+          "id": 1,
+          "fulfillmentType": "FT",
+          "deliveryNumber": "PO473134"
+        },
+        "matchingRules": {
+          "body": {
+            "$.id": {
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.deliveryNumber": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.orderNumber": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.supplierId": {
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.fulfillmentType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.healthState": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "get one delivery by id"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "3.6.7"
+    }
+  }
+}

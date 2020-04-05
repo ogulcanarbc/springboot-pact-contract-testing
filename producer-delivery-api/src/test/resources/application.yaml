@@ -1,0 +1,9 @@
+pactBroker:
+  host: "localhost"
+  port: "80"
+  protocol: "https"
+  auth:
+    username: "pactbrokeruser"
+    password: "1234"
+server:
+  port: 8099
