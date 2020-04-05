@@ -16,4 +16,4 @@ _Provider_
 
 and all after visit to pact broker url. (exmp: localhost:80)
 
-![](x-github-client://openRepo/https://github.com/ogulcanarbc/pact-contract-springboot?branch=master&filepath=images%2Fbroker%20detail.png)
+![](https://github.com/ogulcanarbc/pact-contract-springboot?branch=master&filepath=images%2Fbroker%20detail.png)
