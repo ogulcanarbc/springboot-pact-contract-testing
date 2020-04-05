@@ -15,5 +15,3 @@ _Provider_
 * Execute `mvn pact:verify` for pact verify
 
 and all after visit to pact broker url. (exmp: localhost:80)
-
-![](https://github.com/ogulcanarbc/pact-contract-springboot?branch=master&filepath=images%2Fbroker%20detail.png)
