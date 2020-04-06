@@ -1,6 +1,5 @@
 import au.com.dius.pact.consumer.MockServer;
 import au.com.dius.pact.consumer.Pact;
-import au.com.dius.pact.consumer.PactFolder;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.consumer.junit5.PactConsumerTestExt;
