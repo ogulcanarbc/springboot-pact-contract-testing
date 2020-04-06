@@ -8,7 +8,7 @@
 In order of;
 
 _Consumer_
-* Execute `mvn test `for create pact contract json
+* Execute `mvn test` for create pact contract json
 * Execute `mvn pact:publish` for publish to pact broker
 
 _Provider_
