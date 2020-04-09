@@ -1,6 +1,6 @@
 package com.oglcnarbc.constant;
 
-public enum DeliveryType {
+public enum FulfillmentType {
     ST,
     FT,
     MP;

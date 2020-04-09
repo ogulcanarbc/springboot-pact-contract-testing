@@ -1,6 +1,6 @@
 package com.oglcnarbc.repositoy;
 
-import com.oglcnarbc.constant.DeliveryType;
+import com.oglcnarbc.constant.FulfillmentType;
 import com.oglcnarbc.constant.HealthState;
 import com.oglcnarbc.entity.Delivery;
 import lombok.*;
@@ -19,19 +19,19 @@ public class InMemoryDeliveryRepository implements DeliveryRepository {
 
                 Delivery.create(1, "PO473134", "Oğulcan", "Arabacı",
                         "Çamlık Caddesi, İstanbul", "Almıla", "Can",
-                        "Kılıç Ali Paşa Mahallesi, Sakarya", "4513415", 0, DeliveryType.FT.name(), HealthState.HEALTHY.name()),
+                        "Kılıç Ali Paşa Mahallesi, Sakarya", "4513415", 0, FulfillmentType.FT.name(), HealthState.HEALTHY.name()),
 
                 Delivery.create(2, "744131324", "Ali", "Arabacı",
                         "Çamlık Caddesi, İstanbul", "Alptigin", "Tuğrul",
-                        "Lale Sokak, İstanbul", "4513416", 164, DeliveryType.MP.name(), HealthState.DAMAGED.name()),
+                        "Lale Sokak, İstanbul", "4513416", 164, FulfillmentType.MP.name(), HealthState.DAMAGED.name()),
 
                 Delivery.create(3, "PO689341", "Timur", "Kılıç",
                         "Çamlık Caddesi, İstanbul", "Aslan", "Demir",
-                        "Hamidiye Mahallesi, Düzce", "4513417", 0, DeliveryType.FT.name(), HealthState.FRAUD.name()),
+                        "Hamidiye Mahallesi, Düzce", "4513417", 0, FulfillmentType.FT.name(), HealthState.FRAUD.name()),
 
                 Delivery.create(4, "PO473134", "Zeynep", "Türk",
                         "Zümrütevler Caddesi, İstanbul", "Süleyman", "Birinci",
-                        "Kırlangıç Sokak, Manisa", "4513418", 164, DeliveryType.MP.name(), HealthState.HEALTHY.name())
+                        "Kırlangıç Sokak, Manisa", "4513418", 164, FulfillmentType.MP.name(), HealthState.HEALTHY.name())
         );
     }
 
