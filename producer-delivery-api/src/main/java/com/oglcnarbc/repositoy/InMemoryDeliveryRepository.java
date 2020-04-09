@@ -4,14 +4,13 @@ import com.oglcnarbc.constant.DeliveryType;
 import com.oglcnarbc.constant.HealthState;
 import com.oglcnarbc.entity.Delivery;
 import lombok.*;
-
 import java.util.Arrays;
 import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
-public class InMemoryDeliveryRepository {
+public class InMemoryDeliveryRepository implements DeliveryRepository {
 
     private List<Delivery> deliveries;
 
@@ -36,11 +35,13 @@ public class InMemoryDeliveryRepository {
         );
     }
 
+    @Override
     public List<Delivery> findAll() {
         return deliveries;
     }
 
-    public Delivery getDeliveryById(int id) {
-        return deliveries.stream().filter(x -> x.getId() == id).findFirst().get();
+    @Override
+    public Delivery findById(int id) {
+        return deliveries.stream().filter(delivery -> id == delivery.getId()).findFirst().orElse(new Delivery());
     }
 }

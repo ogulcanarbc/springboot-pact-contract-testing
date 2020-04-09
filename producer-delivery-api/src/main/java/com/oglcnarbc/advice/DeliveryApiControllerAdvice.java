@@ -40,7 +40,7 @@ public class DeliveryApiControllerAdvice {
 
     @ExceptionHandler(NoContentException.class)
     public ResponseEntity<ErrorResponse> noContentException(NoContentException e) {
-        log.error("BookStoreControllerAdvice handlesNoContentExceptionException", e);
+        log.error("DeliveryApiControllerAdvice handlesNoContentExceptionException", e);
         return new ResponseEntity<>(anErrorResponseBuilder(HttpStatus.NO_CONTENT, e.getMessage()), HttpStatus.NO_CONTENT);
 
     }

@@ -1,5 +1,6 @@
 package com.oglcnarbc.service;
 
+import com.oglcnarbc.common.exception.NoContentException;
 import com.oglcnarbc.entity.Delivery;
 import com.oglcnarbc.mapper.DeliveryResponseMapper;
 import com.oglcnarbc.model.response.CreateDeliveryResponse;
@@ -16,7 +17,7 @@ public class DeliveryService {
     private final InMemoryDeliveryRepository deliveryRepository;
     private final DeliveryResponseMapper deliveryResponseMapper;
 
-    DeliveryService(){ //coupling
+    DeliveryService() { //coupling
         deliveryRepository = new InMemoryDeliveryRepository();
         deliveryResponseMapper = new DeliveryResponseMapper();
     }
@@ -28,7 +29,12 @@ public class DeliveryService {
     }
 
     public CreateDeliveryResponse getDeliveryById(int id) {
-        Delivery getDelivery = deliveryRepository.getDeliveryById(id);
-        return deliveryResponseMapper.entity2CreateDelivery(getDelivery);
+
+        Delivery delivery = deliveryRepository.findById(id);
+        if (delivery.getId() == 0) {
+            log.error("No Delivery found by deliveryId: {}", id);
+            throw new NoContentException("No Delivery found by deliveryId: " + id);
+        }
+        return deliveryResponseMapper.entity2CreateDelivery(delivery);
     }
 }
