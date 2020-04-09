@@ -5,5 +5,3 @@ pactBroker:
   auth:
     username: "pactbrokeruser"
     password: "1234"
-server:
-  port: 8099
