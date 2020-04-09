@@ -31,6 +31,7 @@ public class DeliveryService {
     public CreateDeliveryResponse getDeliveryById(int id) {
 
         Delivery delivery = deliveryRepository.findById(id);
+
         if (delivery.getId() == 0) {
             log.error("No Delivery found by deliveryId: {}", id);
             throw new NoContentException("No Delivery found by deliveryId: " + id);
