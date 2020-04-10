@@ -7,6 +7,125 @@
   },
   "interactions": [
     {
+      "description": "a request to get fraud deliveries",
+      "request": {
+        "method": "GET",
+        "path": "/producer/api/v1/delivery/fraud"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": [
+          {
+            "orderNumber": "string",
+            "supplierId": 100,
+            "healthState": "string",
+            "id": 100,
+            "fulfillmentType": "string",
+            "deliveryNumber": "string"
+          }
+        ],
+        "matchingRules": {
+          "body": {
+            "$": {
+              "matchers": [
+                {
+                  "match": "type",
+                  "min": 0
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].id": {
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].deliveryNumber": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].orderNumber": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].supplierId": {
+              "matchers": [
+                {
+                  "match": "integer"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].fulfillmentType": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$[*].healthState": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        },
+        "generators": {
+          "body": {
+            "$[*].id": {
+              "type": "RandomInt",
+              "min": 0,
+              "max": 2147483647
+            },
+            "$[*].deliveryNumber": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$[*].orderNumber": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$[*].supplierId": {
+              "type": "RandomInt",
+              "min": 0,
+              "max": 2147483647
+            },
+            "$[*].fulfillmentType": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$[*].healthState": {
+              "type": "RandomString",
+              "size": 20
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "get fraud deliveries"
+        }
+      ]
+    },
+    {
       "description": "a request to get delivery",
       "request": {
         "method": "GET",
@@ -80,7 +199,7 @@
       },
       "providerStates": [
         {
-          "name": "get one"
+          "name": "get one delivery by id"
         }
       ]
     }

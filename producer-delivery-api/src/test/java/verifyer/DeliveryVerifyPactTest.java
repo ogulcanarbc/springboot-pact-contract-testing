@@ -21,7 +21,11 @@ public class DeliveryPactTest {
     public final Target target = new HttpTarget();
 
 
-    @State(value = "get delivery by id")
-    public void getOneDeliveryByIdResponseState() throws Exception {
+    @State(value = "get one delivery by id")
+    public void getOneDeliveryByIdResponseState() {
+    }
+
+    @State(value = "get fraud deliveries")
+    public void getFraudDeliveries() {
     }
 }
