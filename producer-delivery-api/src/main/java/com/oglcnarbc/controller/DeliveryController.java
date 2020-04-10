@@ -31,4 +31,10 @@ public class DeliveryController {
         return deliveryService.getDeliveryById(id);
     }
 
+    @GetMapping("/delivery/fraud")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CreateDeliveryResponse> getFraudDeliveries() {
+        return deliveryService.getFraudDelivery();
+    }
+
 }
