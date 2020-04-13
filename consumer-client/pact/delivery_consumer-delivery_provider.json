@@ -19,12 +19,12 @@
         },
         "body": [
           {
-            "orderNumber": "string",
-            "supplierId": 100,
-            "healthState": "string",
-            "id": 100,
-            "fulfillmentType": "string",
-            "deliveryNumber": "string"
+            "orderNumber": "",
+            "supplierId": 0,
+            "healthState": "",
+            "id": 0,
+            "fulfillmentType": "",
+            "deliveryNumber": ""
           }
         ],
         "matchingRules": {
@@ -33,7 +33,7 @@
               "matchers": [
                 {
                   "match": "type",
-                  "min": 0
+                  "min": 1
                 }
               ],
               "combine": "AND"
@@ -85,36 +85,6 @@
                 }
               ],
               "combine": "AND"
-            }
-          }
-        },
-        "generators": {
-          "body": {
-            "$[*].id": {
-              "type": "RandomInt",
-              "min": 0,
-              "max": 2147483647
-            },
-            "$[*].deliveryNumber": {
-              "type": "RandomString",
-              "size": 20
-            },
-            "$[*].orderNumber": {
-              "type": "RandomString",
-              "size": 20
-            },
-            "$[*].supplierId": {
-              "type": "RandomInt",
-              "min": 0,
-              "max": 2147483647
-            },
-            "$[*].fulfillmentType": {
-              "type": "RandomString",
-              "size": 20
-            },
-            "$[*].healthState": {
-              "type": "RandomString",
-              "size": 20
             }
           }
         }

@@ -1,5 +1,6 @@
 import au.com.dius.pact.consumer.MockServer;
 import au.com.dius.pact.consumer.Pact;
+import au.com.dius.pact.consumer.dsl.DslPart;
 import au.com.dius.pact.consumer.dsl.PactDslJsonArray;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
@@ -17,6 +18,7 @@ import java.util.Collections;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Matchers.*;
 
 @ExtendWith(PactConsumerTestExt.class)
 public class PactTestForDeliveryConsumerApi {
@@ -48,6 +50,31 @@ public class PactTestForDeliveryConsumerApi {
                 .toPact();
     }
 
+
+    @Pact(consumer = CONSUMER, provider = PROVIDER)
+    public RequestResponsePact getFraudDeliveries(PactDslWithProvider builder) {
+
+        PactDslJsonBody pactDslJsonBody =  PactDslJsonArray.arrayMinLike(1)
+                .integerType("id",anyInt())
+                .stringType("deliveryNumber",anyString())
+                .stringType("orderNumber",anyString())
+                .integerType("supplierId",anyInt())
+                .stringType("fulfillmentType",anyString())
+                .stringType("healthState",anyString());
+
+
+        return builder
+                .given("get fraud deliveries")
+                .uponReceiving("a request to get fraud deliveries")
+                .path("/producer/api/v1/delivery/fraud")
+                .method("GET")
+                .willRespondWith()
+                .headers(Collections.singletonMap("Content-Type", "application/json"))
+                .status(200)
+                .body(pactDslJsonBody)
+                .toPact();
+    }
+
     @ExtendWith(PactConsumerTestExt.class)
     @PactTestFor(pactMethod = "getDeliveryByIdHasOneDelivery")
     @Test
@@ -65,29 +92,6 @@ public class PactTestForDeliveryConsumerApi {
         Assertions.assertEquals("FT", delivery.getFulfillmentType());
         Assertions.assertEquals("HEALTHY", delivery.getHealthState());
 
-    }
-
-    @Pact(consumer = CONSUMER, provider = PROVIDER)
-    public RequestResponsePact getFraudDeliveries(PactDslWithProvider builder) {
-
-        PactDslJsonBody pactDslJsonBody = PactDslJsonArray.arrayEachLike()
-                .integerType("id")
-                .stringType("deliveryNumber")
-                .stringType("orderNumber")
-                .integerType("supplierId")
-                .stringType("fulfillmentType")
-                .stringType("healthState");
-
-        return builder
-                .given("get fraud deliveries")
-                .uponReceiving("a request to get fraud deliveries")
-                .path("/producer/api/v1/delivery/fraud")
-                .method("GET")
-                .willRespondWith()
-                .headers(Collections.singletonMap("Content-Type", "application/json"))
-                .status(200)
-                .body(pactDslJsonBody)
-                .toPact();
     }
 
     @ExtendWith(PactConsumerTestExt.class)
