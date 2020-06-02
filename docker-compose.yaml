@@ -5,15 +5,14 @@ services:
     image: postgres
     healthcheck:
       test: psql postgres --command "select 1" -U postgres
-    ports:
-      - "5432:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 1234
       POSTGRES_DB: postgres
     volumes:
-      - postgre-pact-db:/var/lib/postgresql
-
+    - pact-db:/var/lib/postgresql/data
+    ports:
+    - 5432:5432
 
   broker_app:
     image: dius/pact-broker
@@ -27,5 +26,5 @@ services:
       PACT_BROKER_DATABASE_HOST: postgres
       PACT_BROKER_DATABASE_NAME: postgres
 volumes:
-  postgre-pact-db:
+  pact-db:
     driver: local
