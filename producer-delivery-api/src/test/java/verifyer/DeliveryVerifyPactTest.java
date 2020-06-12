@@ -26,7 +26,7 @@ public class DeliveryVerifyPactTest {
 
 
     @State(value = "get one delivery by id")
-    public void getOneDeliveryByIdResponseState() {
+    public void getOneDeliveryById() {
     }
 
     @State(value = "get fraud deliveries")

@@ -76,9 +76,9 @@ public class PactTestForDeliveryConsumerApi {
     }
 
     @ExtendWith(PactConsumerTestExt.class)
-    @PactTestFor(pactMethod = "getDeliveryByIdHasOneDelivery")
+    @PactTestFor(pactMethod = "getOneDeliveryById")
     @Test
-    void testGetDeliveryVerificationConsumer(MockServer mockServer) throws IOException {
+    void should_get_one_delivery_by_delivery_id(MockServer mockServer) throws IOException {
 
         DeliveryService deliveryService = new DeliveryService(mockServer.getUrl());
 
@@ -97,7 +97,7 @@ public class PactTestForDeliveryConsumerApi {
     @ExtendWith(PactConsumerTestExt.class)
     @PactTestFor(pactMethod = "getFraudDeliveries")
     @Test
-    void testGetFraudDeliveryVerificationConsumer(MockServer mockServer) throws IOException {
+    void should_get_fraud_deliveries(MockServer mockServer) throws IOException {
 
         DeliveryService deliveryService = new DeliveryService(mockServer.getUrl());
         Delivery[] fraudDeliveries = deliveryService.getFraudDeliveries();
