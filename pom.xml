@@ -6,7 +6,7 @@
 
     <modules>
         <module>producer-delivery-api</module>
-		<module>consumer-api</module>
+		<module>consumer-client</module>
 	</modules>
 
 	<groupId>com.oglcnarbc</groupId>

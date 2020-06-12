@@ -70,7 +70,7 @@
                     <pactBrokerUrl>${pactBrokerUrl}</pactBrokerUrl>
                     <projectVersion>${project.version}</projectVersion>
                     <trimSnapshot>true</trimSnapshot>
-                    <pactBrokerUsername>pactbrokeruser</pactBrokerUsername>
+                    <pactBrokerUsername>pact</pactBrokerUsername>
                     <pactBrokerPassword>1234</pactBrokerPassword>
                 </configuration>
             </plugin>
