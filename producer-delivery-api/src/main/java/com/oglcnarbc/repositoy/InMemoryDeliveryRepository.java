@@ -31,7 +31,7 @@ public class InMemoryDeliveryRepository implements DeliveryRepository {
 
                 Delivery.create(4, "PO473134", "Zeynep", "Türk",
                         "Zümrütevler Caddesi, İstanbul", "Süleyman", "Birinci",
-                        "Kırlangıç Sokak, Manisa", "4513418", 164, FulfillmentType.MP.name(), HealthState.HEALTHY.name())
+                        "Kırlangıç Sokak, Artvin", "4513418", 164, FulfillmentType.MP.name(), HealthState.HEALTHY.name())
         );
     }
 
