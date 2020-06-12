@@ -28,7 +28,7 @@ public class PactTestForDeliveryConsumerApi {
 
 
     @Pact(consumer = CONSUMER, provider = PROVIDER)
-    public RequestResponsePact getDeliveryByIdHasOneDelivery(PactDslWithProvider builder) {
+    public RequestResponsePact should_get_one_delivery_by_delivery_id(PactDslWithProvider builder) {
 
         PactDslJsonBody bodyResponse = new PactDslJsonBody()
                 .integerType("id", 1)
@@ -52,7 +52,7 @@ public class PactTestForDeliveryConsumerApi {
 
 
     @Pact(consumer = CONSUMER, provider = PROVIDER)
-    public RequestResponsePact getFraudDeliveries(PactDslWithProvider builder) {
+    public RequestResponsePact should_get_fraud_deliveries(PactDslWithProvider builder) {
 
         PactDslJsonBody pactDslJsonBody =  PactDslJsonArray.arrayMinLike(1)
                 .integerType("id",anyInt())
@@ -76,10 +76,9 @@ public class PactTestForDeliveryConsumerApi {
     }
 
     @ExtendWith(PactConsumerTestExt.class)
-    @PactTestFor(pactMethod = "getOneDeliveryById")
+    @PactTestFor(pactMethod = "should_get_one_delivery_by_delivery_id")
     @Test
     void should_get_one_delivery_by_delivery_id(MockServer mockServer) throws IOException {
-
         DeliveryService deliveryService = new DeliveryService(mockServer.getUrl());
 
         Delivery delivery = deliveryService.getDelivery(1);
@@ -95,7 +94,7 @@ public class PactTestForDeliveryConsumerApi {
     }
 
     @ExtendWith(PactConsumerTestExt.class)
-    @PactTestFor(pactMethod = "getFraudDeliveries")
+    @PactTestFor(pactMethod = "should_get_fraud_deliveries")
     @Test
     void should_get_fraud_deliveries(MockServer mockServer) throws IOException {
 
