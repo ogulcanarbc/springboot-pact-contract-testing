@@ -15,6 +15,4 @@ public class Delivery {
         private String fulfillmentType;
         private String healthState;
 
-
-
 }

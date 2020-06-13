@@ -16,17 +16,17 @@ import org.junit.runner.RunWith;
 @Provider("delivery_provider")
 @PactBroker(host = "localhost", port = "80",
         authentication = @PactBrokerAuth(username = "pact", password = "1234"))
-public class DeliveryVerifyPactTest {
+public class DeliveryVerifyForContract {
 
     @TestTarget
     public final Target target = new HttpTarget("http", "localhost", 8099);
 
 
-    @State(value = "get one delivery by id")
-    public void getOneDeliveryByIdResponseState() {
+    @State(value = "it has one delivery and status code is 200")
+    public void getOneDeliveryByDeliveryIdState() {
     }
 
-    @State(value = "get fraud deliveries")
-    public void getFraudDeliveries() {
+    @State(value = "it has fraud delivery list and status code 200")
+    public void getFraudDeliveriesState() {
     }
 }

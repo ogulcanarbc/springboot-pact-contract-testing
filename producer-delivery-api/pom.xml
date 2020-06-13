@@ -50,11 +50,11 @@
             <type>pom</type>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>au.com.dius</groupId>
             <artifactId>pact-jvm-provider-spring_2.12</artifactId>
             <version>3.6.15</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>au.com.dius</groupId>

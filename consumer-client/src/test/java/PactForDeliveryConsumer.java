@@ -16,12 +16,11 @@ import java.io.IOException;
 import java.util.Collections;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Matchers.*;
 
 @ExtendWith(PactConsumerTestExt.class)
-public class PactTestForDeliveryConsumerApi {
+public class PactForDeliveryConsumer {
 
     private final String CONSUMER = "delivery_consumer";
     private final String PROVIDER = "delivery_provider";
@@ -31,16 +30,16 @@ public class PactTestForDeliveryConsumerApi {
     public RequestResponsePact should_get_one_delivery_by_delivery_id(PactDslWithProvider builder) {
 
         PactDslJsonBody bodyResponse = new PactDslJsonBody()
-                .integerType("id", 1)
-                .stringType("deliveryNumber", "PO473134")
-                .stringType("orderNumber", "4513415")
-                .integerType("supplierId", 0)
-                .stringType("fulfillmentType", "FT")
-                .stringType("healthState", "HEALTHY");
+                .integerType("id", anyInt())
+                .stringType("deliveryNumber", anyString()) //de
+                .stringType("orderNumber", anyString())
+                .integerType("supplierId", anyInt())
+                .stringType("fulfillmentType", anyString())
+                .stringType("healthState", anyString());
 
         return builder
-                .given("get one delivery by id")
-                .uponReceiving("a request to get delivery")
+                .given("it has one delivery and status code is 200")
+                .uponReceiving("a request to retrieve one delivery by id")
                 .path("/producer/api/v1/delivery/1")
                 .method("GET")
                 .willRespondWith()
@@ -54,18 +53,18 @@ public class PactTestForDeliveryConsumerApi {
     @Pact(consumer = CONSUMER, provider = PROVIDER)
     public RequestResponsePact should_get_fraud_deliveries(PactDslWithProvider builder) {
 
-        PactDslJsonBody pactDslJsonBody =  PactDslJsonArray.arrayMinLike(1)
-                .integerType("id",anyInt())
-                .stringType("deliveryNumber",anyString())
-                .stringType("orderNumber",anyString())
-                .integerType("supplierId",anyInt())
-                .stringType("fulfillmentType",anyString())
-                .stringType("healthState",anyString());
+        PactDslJsonBody pactDslJsonBody = PactDslJsonArray.arrayMinLike(1)
+                .integerType("id", anyInt())
+                .stringType("deliveryNumber", anyString())
+                .stringType("orderNumber", anyString())
+                .integerType("supplierId", anyInt())
+                .stringType("fulfillmentType", anyString())
+                .stringType("healthState", anyString());
 
 
         return builder
-                .given("get fraud deliveries")
-                .uponReceiving("a request to get fraud deliveries")
+                .given("it has fraud delivery list and status code 200")
+                .uponReceiving("a request to retrieve fraud delivery list")
                 .path("/producer/api/v1/delivery/fraud")
                 .method("GET")
                 .willRespondWith()
@@ -83,15 +82,14 @@ public class PactTestForDeliveryConsumerApi {
 
         Delivery delivery = deliveryService.getDelivery(1);
 
-        Assertions.assertNotNull(delivery);
-        Assertions.assertEquals(1, delivery.getId());
-        Assertions.assertEquals("PO473134", delivery.getDeliveryNumber());
-        Assertions.assertEquals("4513415", delivery.getOrderNumber());
-        Assertions.assertEquals(0, delivery.getSupplierId());
-        Assertions.assertEquals("FT", delivery.getFulfillmentType());
-        Assertions.assertEquals("HEALTHY", delivery.getHealthState());
-
+        assertThat(delivery.getId(), is(anyInt()));
+        assertThat(delivery.getDeliveryNumber(),is(anyString()));
+        assertThat(delivery.getOrderNumber(),is(anyString()));
+        assertThat(delivery.getSupplierId(), is(anyInt()));
+        assertThat(delivery.getFulfillmentType(),is(anyString()));
+        assertThat(delivery.getHealthState(),is(anyString()));
     }
+
 
     @ExtendWith(PactConsumerTestExt.class)
     @PactTestFor(pactMethod = "should_get_fraud_deliveries")
@@ -113,5 +111,6 @@ public class PactTestForDeliveryConsumerApi {
         assertThat(fraudDelivery.getSupplierId(), is(greaterThanOrEqualTo(0)));
 
     }
+
 
 }

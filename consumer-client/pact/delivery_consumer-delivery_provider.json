@@ -7,7 +7,7 @@
   },
   "interactions": [
     {
-      "description": "a request to get fraud deliveries",
+      "description": "a request to retrieve fraud delivery list",
       "request": {
         "method": "GET",
         "path": "/producer/api/v1/delivery/fraud"
@@ -91,12 +91,12 @@
       },
       "providerStates": [
         {
-          "name": "get fraud deliveries"
+          "name": "it has fraud delivery list and status code 200"
         }
       ]
     },
     {
-      "description": "a request to get delivery",
+      "description": "a request to retrieve one delivery by id",
       "request": {
         "method": "GET",
         "path": "/producer/api/v1/delivery/1"
@@ -107,12 +107,12 @@
           "Content-Type": "application/json"
         },
         "body": {
-          "orderNumber": "4513415",
+          "orderNumber": "",
           "supplierId": 0,
-          "healthState": "HEALTHY",
-          "id": 1,
-          "fulfillmentType": "FT",
-          "deliveryNumber": "PO473134"
+          "healthState": "",
+          "id": 0,
+          "fulfillmentType": "",
+          "deliveryNumber": ""
         },
         "matchingRules": {
           "body": {
@@ -169,7 +169,7 @@
       },
       "providerStates": [
         {
-          "name": "get one delivery by id"
+          "name": "it has one delivery and status code is 200"
         }
       ]
     }

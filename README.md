@@ -8,7 +8,7 @@
 In order of;
 
 _Consumer_
-* Execute `mvn -Dtest=PactTestForDeliveryConsumerApi test` for create pact contract json
+* Execute `mvn -Dtest=PactForDeliveryConsumer test` for create pact contract json
 * Execute `mvn pact:publish` for publish to pact broker
 
 _Provider_
