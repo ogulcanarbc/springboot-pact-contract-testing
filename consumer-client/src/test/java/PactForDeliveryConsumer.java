@@ -1,6 +1,5 @@
 import au.com.dius.pact.consumer.MockServer;
 import au.com.dius.pact.consumer.Pact;
-import au.com.dius.pact.consumer.dsl.DslPart;
 import au.com.dius.pact.consumer.dsl.PactDslJsonArray;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
@@ -22,11 +21,11 @@ import static org.mockito.Matchers.*;
 @ExtendWith(PactConsumerTestExt.class)
 public class PactForDeliveryConsumer {
 
-    private final String CONSUMER = "delivery_consumer";
-    private final String PROVIDER = "delivery_provider";
+    private final String CONSUMER_DELIVERY = "delivery_consumer";
+    private final String PROVIDER_DELIVERY = "delivery_provider";
 
-
-    @Pact(consumer = CONSUMER, provider = PROVIDER)
+    //provide mocking
+    @Pact(consumer = CONSUMER_DELIVERY, provider = PROVIDER_DELIVERY)
     public RequestResponsePact should_get_one_delivery_by_delivery_id(PactDslWithProvider builder) {
 
         PactDslJsonBody bodyResponse = new PactDslJsonBody()
@@ -50,7 +49,7 @@ public class PactForDeliveryConsumer {
     }
 
 
-    @Pact(consumer = CONSUMER, provider = PROVIDER)
+    @Pact(consumer = CONSUMER_DELIVERY, provider = PROVIDER_DELIVERY)
     public RequestResponsePact should_get_fraud_deliveries(PactDslWithProvider builder) {
 
         PactDslJsonBody pactDslJsonBody = PactDslJsonArray.arrayMinLike(1)
@@ -74,6 +73,7 @@ public class PactForDeliveryConsumer {
                 .toPact();
     }
 
+    //pact consumer testing
     @ExtendWith(PactConsumerTestExt.class)
     @PactTestFor(pactMethod = "should_get_one_delivery_by_delivery_id")
     @Test
@@ -83,11 +83,11 @@ public class PactForDeliveryConsumer {
         Delivery delivery = deliveryService.getDelivery(1);
 
         assertThat(delivery.getId(), is(anyInt()));
-        assertThat(delivery.getDeliveryNumber(),is(anyString()));
-        assertThat(delivery.getOrderNumber(),is(anyString()));
+        assertThat(delivery.getDeliveryNumber(), is(anyString()));
+        assertThat(delivery.getOrderNumber(), is(anyString()));
         assertThat(delivery.getSupplierId(), is(anyInt()));
-        assertThat(delivery.getFulfillmentType(),is(anyString()));
-        assertThat(delivery.getHealthState(),is(anyString()));
+        assertThat(delivery.getFulfillmentType(), is(anyString()));
+        assertThat(delivery.getHealthState(), is(anyString()));
     }
 
 
@@ -103,14 +103,13 @@ public class PactForDeliveryConsumer {
 
         Delivery fraudDelivery = fraudDeliveries[0];
 
-        assertThat(fraudDelivery.getId(), is(greaterThanOrEqualTo(0)));
-        Assertions.assertNotNull(fraudDelivery.getDeliveryNumber());
-        Assertions.assertNotNull(fraudDelivery.getOrderNumber());
-        Assertions.assertNotNull(fraudDelivery.getHealthState());
-        Assertions.assertNotNull(fraudDelivery.getFulfillmentType());
-        assertThat(fraudDelivery.getSupplierId(), is(greaterThanOrEqualTo(0)));
+        assertThat(fraudDelivery.getId(), is(anyInt()));
+        assertThat(fraudDelivery.getDeliveryNumber(), is(anyString()));
+        assertThat(fraudDelivery.getOrderNumber(), is(anyString()));
+        assertThat(fraudDelivery.getHealthState(), is(anyString()));
+        assertThat(fraudDelivery.getFulfillmentType(), is(anyString()));
+        assertThat(fraudDelivery.getSupplierId(), is(anyInt()));
 
     }
-
 
 }

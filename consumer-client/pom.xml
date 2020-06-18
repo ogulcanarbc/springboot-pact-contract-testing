@@ -17,7 +17,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <pactVersion>3.6.7</pactVersion>
         <junit5Version>5.4.2</junit5Version>
-        <pactBrokerUrl>http://localhost:80</pactBrokerUrl>
     </properties>
 
     <dependencies>
@@ -67,11 +66,15 @@
                 <version>${pactVersion}</version>
                 <configuration>
                     <pactDirectory>pact</pactDirectory>
-                    <pactBrokerUrl>${pactBrokerUrl}</pactBrokerUrl>
-                    <projectVersion>${project.version}</projectVersion>
                     <trimSnapshot>true</trimSnapshot>
+                    <pactBrokerUrl>http://localhost:80</pactBrokerUrl>
                     <pactBrokerUsername>pact</pactBrokerUsername>
                     <pactBrokerPassword>1234</pactBrokerPassword>
+                    <projectVersion>efbc26za</projectVersion> <!--set CI build version or commit id. exmp. get maven git plugin etc.-->
+                    <tags>
+                        <tag>master</tag> <!-- exmp. Jenkinsfile set -> -Dpact.tag=${BRANCH_NAME}-->
+                        <tag>local</tag> <!-- exmp. Jenkinsfile set -> -Dpact.tag=${ENV}-->
+                    </tags>
                 </configuration>
             </plugin>
             <plugin>

@@ -1,4 +1,4 @@
-package verifyer;
+package verification;
 
 import au.com.dius.pact.provider.junit.PactRunner;
 import au.com.dius.pact.provider.junit.Provider;

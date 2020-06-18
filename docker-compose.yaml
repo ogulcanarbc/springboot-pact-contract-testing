@@ -15,7 +15,7 @@ services:
     - 5432:5432
 
   broker_app:
-    image: dius/pact-broker
+    image: dius/pact-broker:latest
     links:
       - postgres
     ports:

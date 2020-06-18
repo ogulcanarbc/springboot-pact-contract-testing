@@ -27,7 +27,7 @@ public class DeliveryController {
 
     @GetMapping("/delivery/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CreateDeliveryResponse getDeliveriesById(@PathVariable("id") int id) {
+    public CreateDeliveryResponse getDeliveryById(@PathVariable("id") int id) {
         return deliveryService.getDeliveryById(id);
     }
 

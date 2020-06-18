@@ -90,6 +90,11 @@
                     <pactBrokerUrl>http://localhost:80/</pactBrokerUrl>
                     <pactBrokerUsername>pact</pactBrokerUsername>
                     <pactBrokerPassword>1234</pactBrokerPassword>
+                    <projectVersion>abc13da</projectVersion> <!--set CI build version or commit id.${GIT_COMMIT} get exmp. maven git plugin etc.-->
+                    <tags>
+                        <tag>master</tag> <!-- exmp. Jenkinsfile set -> -Dpact.tag=${BRANCH_NAME}-->
+                        <tag>local</tag> <!-- exmp. Jenkinsfile set -> -Dpact.tag=${ENV}-->
+                    </tags>
                 </configuration>
             </plugin>
         </plugins>
