@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
 @RequestMapping("/producer/api/v1")
-@RequiredArgsConstructor
 @DeliveryApi
 public class DeliveryController {
 
