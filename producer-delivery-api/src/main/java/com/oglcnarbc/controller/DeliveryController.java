@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/producer/api/v1")
 @DeliveryApi
+@RequiredArgsConstructor
+@RequestMapping("/producer/api/v1")
 public class DeliveryController {
 
     private final DeliveryService deliveryService;
